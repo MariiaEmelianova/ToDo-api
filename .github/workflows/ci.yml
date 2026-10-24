@@ -20,3 +20,14 @@ jobs:
 
     - name: Run tests
       run: python -m pytest -v
+
+    - name: Create artifact
+      run: |
+        mkdir artifact
+        cd app_final.py requirements.txt README.md artifact/
+
+    - name: Upload artifact
+      uses: action/upload-artifact@v4
+      with:
+        name: app-files
+        path: artifact/
