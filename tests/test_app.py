@@ -25,7 +25,7 @@ def test_get_task_by_id():
     assert response.json()["id"] == 1
 
 def test_limit_error():
-    for i in range(MAX_TASKS + 1):
+    for i in range(15):
         client.post("/tasks", json={"title": f"Task {i}"})
     response = client.post("/tasks", json={"title": "Extra"})
     assert response.status_code == 400
